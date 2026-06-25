@@ -1,0 +1,83 @@
+{
+  "topic": "big data",
+  "fetched_at": "2026-06-25T05:05:59.118016+00:00",
+  "total": 5,
+  "articles": [
+    {
+      "title": "Learning Action Priors for Cross-embodiment Robot Manipulation",
+      "summary": "Most Vision-Language-Action (VLA) models build on a Vision-Language Model (VLM) backbone by attaching an action module and optimizing the full policy jointly. This design inherits strong visual and linguistic priors from the VLM, but leaves the action module to learn physical motion almost from scratch. As a result, the policy lacks an explicit motion prior, forcing early optimization to simultaneously discover temporal action dynamics and cross-modal alignment, a challenge further amplified in cross-embodiment settings. In this work, we propose to pretrain the action module with motion priors before cross-modal VLA alignment. Specifically, we introduce a two-stage training framework that equips the action module with cross-embodiment temporal motion structure before VLA training begins. In Stage~1, a lightweight flow-matching-based encoder-decoder action module efficiently learns temporal motion structure solely from unconditioned action trajectories, without processing visual or language tokens. In Stage~2, this learned prior is transferred to VLA training through decoder reuse and early-stage latent distillation, aligning visual-language features with the action embedding space while still allowing end-to-end policy refinement. In addition, the trained encoder serves as a compact history compressor, summarizing state-action histories into a single temporal context token for history-aware modeling at negligible cost. Extensive experiments across 13 diverse cross-embodiment tasks on both simulated and real-world platforms validate the effectiveness of our approach. Compared with VLA training without action priors, our model achieves faster convergence, higher success rates, and substantially stronger performance on data-scarce real-world tasks. Moreover, scaling up the action data in Stage~1 yields a more generalizable action prior that directly improves downstream VLA performance.",
+      "authors": [
+        "Dong Jing",
+        "Tianqi Zhang",
+        "Jiaqi Liu",
+        "Jinman Zhao",
+        "Zelong Sun",
+        "Li Erran Li",
+        "Zhiwu Lu",
+        "Mingyu Ding"
+      ],
+      "published": "2026-06-24T17:59:56Z",
+      "link": "https://arxiv.org/abs/2606.26095v1"
+    },
+    {
+      "title": "ForceBand: Learning Forceful Manipulation with sEMG",
+      "summary": "Human demonstrations are a scalable data source for learning robot manipulation policies. However, common sources of human demonstration data, such as motion-capture trajectories and internet videos, capture mostly motion and appearance while missing the contact forces that are critical for force-sensitive manipulation. In this paper, we introduce ForceBand, a low-cost wrist-worn sEMG system that turns human muscle activity into force-enriched demonstrations. We first collect a 10-hour multimodal dataset containing egocentric video, sEMG, IMU, and fingertip force measurements across diverse actions and objects. Using this dataset, we pre-train an EMG2Force model that predicts per-finger forces from sEMG and IMU signals. After a short user-specific calibration, users can collect target-task demonstrations using only ForceBand and video; EMG2Force then labels these demonstrations with per-finger force traces, producing force-augmented demonstrations for robot policy learning. Experiments show that ForceBand recovers fine-grained fingertip interactions with over 50% lower force prediction error than vision-based baselines and achieves an 87% success rate on pick, squeeze, and place tasks that require object-specific force control across objects with diverse shapes, sizes, and weights. Project website: https://forceband-emg.github.io",
+      "authors": [
+        "Botao He",
+        "Zhi Wang",
+        "Linna Kuang",
+        "Ishaan Ghosh",
+        "Jitendra Malik",
+        "Cornelia Fermuller",
+        "Tingfan Wu",
+        "Jiayuan Mao",
+        "Ruoshi Liu",
+        "Haozhi Qi",
+        "Yiannis Aloimonos"
+      ],
+      "published": "2026-06-24T17:59:35Z",
+      "link": "https://arxiv.org/abs/2606.26093v1"
+    },
+    {
+      "title": "Bayesian Nonparametric Privacy-Preserving Synthetic Data Generation: I. Discrete Data",
+      "summary": "Synthetic data generation is a powerful approach to privacy-preserving statistical analysis, where data-release mechanisms are governed by a privacy-utility tradeoff: they should provide privacy guarantees while preserving the statistical utility of confidential data. We develop a Bayesian nonparametric framework for private synthetic data generation tailored to discrete data. Specifically, the confidential data are modeled as a random sample from an unknown discrete distribution endowed with a Pitman-Yor process prior, and synthetic data are generated from the corresponding posterior-predictive distribution. Since the Pitman-Yor process defines an almost surely discrete random probability measure, the resulting mechanism is naturally suited to data with ties and settings involving a potentially large, unknown, or growing number of categories. We study differential privacy guarantees of the Pitman-Yor posterior-predictive mechanism across the three regimes of the discount parameter $\u03c3\\in(-\\infty,1)$. For $\u03c3\\in(0,1)$, we establish an instance-level $(\\varepsilon,\u03b4)$-differential privacy guarantee. For $\u03c3=0$ and $\u03c3<0$, corresponding respectively to the Dirichlet process prior and to a parametric Dirichlet-Multinomial model, stronger guarantees are obtained, under suitable conditions on the released sample size. We also investigate statistical utility, or informativity, of the released data via the expected $1$-Wasserstein distance between the empirical distribution of the synthetic data and the \"true\" data-generating distribution. For $\u03c3<0$ and $\u03c3=0$, we prove consistency of the empirical distribution in this metric and derive explicit convergence rates, making precise the privacy-utility tradeoff: stronger privacy guarantees impose more restrictive choices of the released sample size, slowing down convergence to the \"true\" data-generating distribution.",
+      "authors": [
+        "Maria Chiara Menicucci",
+        "Mario Beraha",
+        "Stefano Favaro",
+        "Riccardo Lazzarini"
+      ],
+      "published": "2026-06-24T17:47:21Z",
+      "link": "https://arxiv.org/abs/2606.26073v1"
+    },
+    {
+      "title": "A welding penetration prediction model for laser welding process based on self-supervised learning using physics-informed neural networks",
+      "summary": "The laser welding full-penetration is of critical importance, as it constitutes one of the fundamental factors in achieving defect-free welded joints. Accurate prediction of the penetration state is therefore essential for ensuring weld quality. To this end, this paper introduces SimPhysNet, a novel algorithm that achieves high classification accuracy in laser welding penetration prediction using only a limited number of labelled images. This approach effectively overcomes the limitations of supervised learning classification algorithms, which are hindered in industrial applications by their dependence on extensive, high-quality labelled data. The core of SimPhysNet is a unique self-supervised learning paradigm that embeds physical priors into a contrastive learning framework. By incorporating a physics-informed neural network (PINN), the model is guided to extract physically meaningful features of the molten pool and keyhole from a large set of unlabelled data, while three image augmentation tasks further enhance its generalization capabilities. Subsequently, a few-shot learning strategy, based on prototypical networks, enables robust classification by constructing class representations from a minimal set of labelled images. Experimental results demonstrate that SimPhysNet achieves a classification accuracy of 96.06% using only 200 labelled images (approximately 5% of the total labelled dataset), which is comparable to the performance of conventional supervised learning algorithms that utilize the entire labelled dataset. This work presents a new, efficient, and highly accurate method, providing the way for the intelligent automation of laser welding.",
+      "authors": [
+        "Sen Li",
+        "Xiaoying Liu",
+        "Xiaojian Xu",
+        "Chendong Shao",
+        "Yaqi Wang",
+        "Ling Lan",
+        "Xinhua Tang",
+        "Haichao Cui"
+      ],
+      "published": "2026-06-24T17:33:41Z",
+      "link": "https://arxiv.org/abs/2606.26059v1"
+    },
+    {
+      "title": "Impact of parity-violating deep-inelastic scattering on the weak mixing angle and high-$x$ parton distributions",
+      "summary": "We discuss the impact of neutral current parity-violating deep-inelastic scattering (PVDIS) of electrons from protons and deuterons on the determination of the weak mixing angle, $\\sin^{2}{\u03b8_{\\rm W}}$, and parton distribution functions (PDFs) at large parton momentum fractions $x$. Using the JAM global QCD analysis framework, we study the effect of incorporating pseudodata simulated for 11 GeV and 22 GeV Jefferson Lab kinematics, accounting for radiative corrections in a factorized QED+QCD approach and uncertainties from higher twist corrections in $\u03b3Z$ exchange. We find that including future PVDIS pseudodata could yield important constraints on the value of $\\sin^{2}{\u03b8_{\\rm W}}$ at low $Q^2$ and on the high-$x$ behavior of the strange quark and $d/u$ PDF ratio. The strong correlation between $\\sin^{2}{\u03b8_{\\rm W}}$ and the $x$ dependence of the PDFs demonstrates the necessity for simultaneous analysis of QCD and electroweak quantities to ensure an unbiased determination of the weak mixing angle from PVDIS data.",
+      "authors": [
+        "R. M. Whitehill",
+        "M. M. Dalton",
+        "T. Liu",
+        "W. Melnitchouk",
+        "N. Sato"
+      ],
+      "published": "2026-06-24T17:31:40Z",
+      "link": "https://arxiv.org/abs/2606.26056v1"
+    }
+  ]
+}

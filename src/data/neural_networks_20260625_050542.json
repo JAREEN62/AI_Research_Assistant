@@ -1,0 +1,70 @@
+{
+  "topic": "neural networks",
+  "fetched_at": "2026-06-25T05:05:42.434091+00:00",
+  "total": 5,
+  "articles": [
+    {
+      "title": "Parnassus: A GPU-enabled, Python-based Package for Fast Particle Detector Simulation and Reconstruction",
+      "summary": "We present the public software release of Parnassus, a Python/PyTorch, GPU-compatible framework for fast detector simulation and reconstruction in particle and nuclear physics. Parnassus provides a user-friendly framework with interchangeable detector models: neural models can emulate computationally expensive Geant4-based detector simulation and reconstruction chains, while parametric models provide PyTorch implementations of selected Delphes-style detector responses. This initial release includes two models of the CMS detector: one based on a flow-matching neural network architecture and one based on a PyTorch implementation of the Delphes CMS card (parametric bias and smearing). PyTorch versions of the ATLAS and ALEPH Delphes cards are also available, together with a flow-matching neural model of the ALEPH detector that extends the framework to the e+e- LEP environment. All detector-specific backends share the same process-agnostic and detector-agnostic API: users select a detector card - analogous to choosing a detector card in Delphes - and the same tool can be applied to new physics processes without retraining the released detector model. There are native interfaces to the event generator Pythia and the event clustering package FastJet. Unlike previous C++/ROOT-based tools, Parnassus provides GPU-capable PyTorch detector-response backends and requires no ROOT installation. We describe the installation, command-line and Python API, configuration system, and demonstrate the framework on Standard Model and BSM processes.",
+      "authors": [
+        "Abdelrahman Elabd",
+        "Eilam Gross",
+        "Dmitrii Kobylianskii",
+        "Benjamin Nachman"
+      ],
+      "published": "2026-06-24T17:57:29Z",
+      "link": "https://arxiv.org/abs/2606.26089v1"
+    },
+    {
+      "title": "A welding penetration prediction model for laser welding process based on self-supervised learning using physics-informed neural networks",
+      "summary": "The laser welding full-penetration is of critical importance, as it constitutes one of the fundamental factors in achieving defect-free welded joints. Accurate prediction of the penetration state is therefore essential for ensuring weld quality. To this end, this paper introduces SimPhysNet, a novel algorithm that achieves high classification accuracy in laser welding penetration prediction using only a limited number of labelled images. This approach effectively overcomes the limitations of supervised learning classification algorithms, which are hindered in industrial applications by their dependence on extensive, high-quality labelled data. The core of SimPhysNet is a unique self-supervised learning paradigm that embeds physical priors into a contrastive learning framework. By incorporating a physics-informed neural network (PINN), the model is guided to extract physically meaningful features of the molten pool and keyhole from a large set of unlabelled data, while three image augmentation tasks further enhance its generalization capabilities. Subsequently, a few-shot learning strategy, based on prototypical networks, enables robust classification by constructing class representations from a minimal set of labelled images. Experimental results demonstrate that SimPhysNet achieves a classification accuracy of 96.06% using only 200 labelled images (approximately 5% of the total labelled dataset), which is comparable to the performance of conventional supervised learning algorithms that utilize the entire labelled dataset. This work presents a new, efficient, and highly accurate method, providing the way for the intelligent automation of laser welding.",
+      "authors": [
+        "Sen Li",
+        "Xiaoying Liu",
+        "Xiaojian Xu",
+        "Chendong Shao",
+        "Yaqi Wang",
+        "Ling Lan",
+        "Xinhua Tang",
+        "Haichao Cui"
+      ],
+      "published": "2026-06-24T17:33:41Z",
+      "link": "https://arxiv.org/abs/2606.26059v1"
+    },
+    {
+      "title": "Natural Ungrokking: Asymmetric Control of Which Rules Survive Pretraining",
+      "summary": "Midway through an ordinary pretraining run, a small language model learns the pronoun-gender rule: cued with a girl's name (\"Sue cried because\"), it resolves the next pronoun to she, generalizing to held-out probes (0.94 by step 925). By step 3,500 the same model scores near zero on the same probes, although the rule's evidence is still in the training data. We call this within-run reversal natural ungrokking: the corpus decides, with no trace in the loss curve, which learned rules a model keeps.\n  Which rules survive is predictable from one corpus statistic: how often the training stream shows the rule winning. Across un-intervened runs (two corpora, three budgets, three seeds), support frequency decides a rule's fate; the data-to-parameter ratio only modulates how deeply a doomed rule falls. The same emerge-then-collapse dynamics appear in public Pythia checkpoints, collapse depth ordered by model scale as predicted. The forgetting is a displacement: a competing surface pattern out-competes the rule, and the log-probability margin between them crosses zero within 100 training steps of the behavioral collapse.\n  Control over this fate is asymmetric: the same edit that destroys a rule on demand cannot restore it. Flipping support to counter-evidence in place kills the rule with monotone dose-response in two unrelated rules; but injecting support back, even to 450 times the level that naturally sustains it, buys no recovery. Every confirmatory threshold and prediction was pre-registered before the data it governed was read.",
+      "authors": [
+        "Juliana Li",
+        "Diya Sreedhar"
+      ],
+      "published": "2026-06-24T17:27:13Z",
+      "link": "https://arxiv.org/abs/2606.26050v1"
+    },
+    {
+      "title": "Spin modulations in the Rashba-Hubbard chain -- a tensor network study",
+      "summary": "Uniform spin-orbit coupling in an open single-band Hubbard chain is an exactly removable \\(SU(2)\\) gauge field at the Hamiltonian level, but not at the level of laboratory-frame spin correlations. We study this separation using density matrix renormalization group calculations for the repulsive one-dimensional Rashba-Hubbard chain. For open boundary conditions, a site-dependent spin rotation maps the model with hopping \\(t\\) and Rashba spin-orbit strength \\(\u03bb\\) onto the ordinary Hubbard chain with renormalized hopping \\(t_\u03bb=\\sqrt{t^2+\u03bb^2}\\). Consequently, charge and energy diagnostics are affected only through the bandwidth renormalization, which is quadratic in weak \\(\u03bb/t\\). Spin correlations, however, respond already at linear order because the same transformation rotates the local spin basis by the wave vector \\(k_{\\rm so}=2\\arctan(\u03bb/t)\\). We use DMRG to verify this observable consequence across the filling diagram of finite open chains. The filling structure follows the gauge-equivalent Hubbard model, whereas the spin structure factor shows the predicted spin-orbit sidebands. A dominant Hubbard-chain magnetic wave vector \\(k_0\\) is transformed into components at \\(k_0\\pm k_{\\rm so}\\), folded into the open-chain Brillouin zone. At half filling, where \\(k_0=\u03c0\\), the two sidebands fold onto a single, in-plane, spin spiral wave with \\(k=\u03c0-k_{\\rm so}<\u03c0\\). Away from half filling, the incommensurate Hubbard spin response splits into two distinct spin-orbit-shifted components, producing a real-space beating pattern. Our results provide a filling-resolved tensor-network benchmark for the exactly removable limit of one-dimensional spin-orbit coupling, and establish a controlled reference point for ladders, multiorbital chains, rings, proximitized wires, and higher-dimensional Hubbard systems where spin-orbit coupling can no longer be gauged away.",
+      "authors": [
+        "Jozef Genzor",
+        "Roman Kr\u010dm\u00e1r",
+        "Andrej Gendiar",
+        "Chia-Min Chung",
+        "Denis Kochan"
+      ],
+      "published": "2026-06-24T16:35:15Z",
+      "link": "https://arxiv.org/abs/2606.26014v1"
+    },
+    {
+      "title": "G-PINNs: Gaussian-based spatially weighted formulation for PINNs: 1D low-viscous Burgers",
+      "summary": "We introduce a Gaussian-based spatially weighted loss framework (G-PINNs) for physics-informed neural networks (PINNs) to improve the resolution of sharp discontinuities and shock waves. The proposed method dynamically prioritizes collocation points in high-gradient regions during optimization. Without requiring prior knowledge of the shock location or trajectory, the framework can autonomously detect and track moving discontinuities directly from the PDE residual landscape, making it broadly applicable to problems in which the position of shocks or discontinuities is unknown \\textit{a priori}. The approach is validated using one-dimensional quasi-inviscid Burgers' problems exhibiting both stationary and moving shock waves. For the low-viscosity regime $(\u03bd= 0.0005)$, the proposed method achieves $L_2$ relative errors of approximately $13\\%$ and $14\\%$ for the stationary and moving shock cases, respectively, compared with $45\\%$ and $33\\%$ obtained when using standard PINNs.",
+      "authors": [
+        "Kheir-eddine Otmani",
+        "Abdelhalim Azzouz",
+        "Nourelhouda Groun",
+        "Esteban Ferrer"
+      ],
+      "published": "2026-06-24T16:32:51Z",
+      "link": "https://arxiv.org/abs/2606.26013v1"
+    }
+  ]
+}
