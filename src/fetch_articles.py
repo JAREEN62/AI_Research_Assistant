@@ -8,6 +8,14 @@ import sys
 import time
 from datetime import datetime, timezone
 
+from dotenv import load_dotenv
+from langchain_anthropic import ChatAnthropic
+
+load_dotenv() #loads your .env file
+
+
+
+
 def fetch_arxiv_articles(topic, max_results=10):
     # Build the URL — like typing a search into a website
     params = urllib.parse.urlencode({
