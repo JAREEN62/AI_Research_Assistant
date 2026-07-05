@@ -28,3 +28,4 @@ Always respond in this exact JSON format:
      Abstract: {abstract}""")
 ])
 
+chain = prompt | llm | StrOutputParser()

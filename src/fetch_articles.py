@@ -13,7 +13,7 @@ from langchain_anthropic import ChatAnthropic
 
 load_dotenv() #loads your .env file
 
-llm = ChatAnthropic(model="Claude-haiku-4-5")
+llm = ChatAnthropic(model="claude-haiku-4-5")
 
 
 def fetch_arxiv_articles(topic, max_results=10):
@@ -101,4 +101,5 @@ if __name__ == "__main__":
         save_to_json(articles, topic)
     except RuntimeError as exc:
         print(f"Error: {exc}", file=sys.stderr)
-        raise SystemExit(1) 
+        raise SystemExit(1)
+    
