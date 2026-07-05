@@ -9,3 +9,4 @@ from langchain_core.output_parsers import StrOutputParser
 
 load_dotenv()
 
+llm = ChatAnthropic(model="claude-haiku-4-5")
