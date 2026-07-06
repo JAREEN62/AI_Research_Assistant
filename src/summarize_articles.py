@@ -68,3 +68,47 @@ def load_all_articles(data_folder: str) -> list:
         all_articles.extend(articles) 
 
     return all_articles
+
+def summarize_article(article: dict) -> dict:
+    """
+    sends one article to claude and returns a structured summary.
+    """
+    title = article.get("titled", "untitled")
+    abstract = article.get("summary", "No abstract available.") # In fetch_articles.py the abstract of the papers is stored under the key "summary" - so thats the key we read here
+    
+    print(f"\n Summarizing: {title[:60]}...")
+    
+    try:
+        raw_response = chain.invoke( #fills the title and abstract into the prompt template
+            {
+            "title": title,
+            "abstract": abstract
+            }
+        )
+        
+        summary=json.loads(raw_response.strip()) # converts string produced by claude in to actuall python dictioinary(JSON) format.
+                                                #strip() - removes white spaces produced by claude
+
+        return {
+                "title":      title,
+                "authors":    article.get("authors", []),
+                "published":  article.get("published", ""),
+                "link":       article.get("link", ""),
+                "summary":    summary      # Claude's structured summary
+            }
+    
+    except json.JSONDecodeError:
+        print(f" ⚠️ Claude didn't return clear JSON for this article. Saving raw response.")
+        return{
+            "title": title,
+            "author": article.get("authors",[]),
+            "raw_response": raw_response
+        }
+        
+    except Exception as e:
+        print(f" ❌ Error summarizing article:{e}")
+        return {"title": title,"error": str(e)}
+    
+                                             
+    
+    
