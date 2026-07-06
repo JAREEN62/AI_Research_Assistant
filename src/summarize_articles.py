@@ -29,3 +29,34 @@ Always respond in this exact JSON format:
 ])
 
 chain = prompt | llm | StrOutputParser()
+
+def load_all_articles(data_folder: str) -> list:
+    """
+    Loads all JSON files from your data/ folder.
+    Returns a flat list of all articles across all files.
+    """
+    all_articles = []
+    
+    # find all .JSON files in the data folder
+    pattern = os.path.join(data_folder,"*.json") #builds a file path for any operating system carefully.
+    json_files = glob.glob(pattern)
+    
+    if not json_files:
+         print(f"❌ No JSON files found in: {data_folder}")
+         print("Run fetch_articles.py first!")
+         return[]
+    print(f" Found {len(json_files)} JSON file(s) to process:")
+    
+    for filepath in json_files:
+        filename = os.path.basename(filepath)
+        
+        with open(filepath,"r", encoding="utf-8") as f:
+            data = json.load(f)
+         
+        # to unwrap the articles in fetch_articles.py file    
+        if isinstance(data, dict) and "articles" in data:
+            articles = data["articles"]
+            topic = data.get("topic", "unknown")
+        elif isinstance(data, list): 
+            articles = data # haldles the older format too
+            
