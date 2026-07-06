@@ -60,3 +60,11 @@ def load_all_articles(data_folder: str) -> list:
         elif isinstance(data, list): 
             articles = data # haldles the older format too
             
+            topic = "unknown"
+        else:
+            articles = []
+            
+        print(f"   ✅ {filename} → {len(articles)} articles (topic: {topic})")
+        all_articles.extend(articles) 
+
+    return all_articles
