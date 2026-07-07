@@ -135,3 +135,19 @@ def save_summaries(summaries: list,data_folder: str)->str:
         
     print(f"\n 📁 Saved {len(summaries)} summaries -> {filename}")
     return filename
+
+
+
+
+if __name__ =="__main__":
+    print("=" * 55)
+    print("AI Research Assistant - LLM Summarizer")
+    print("=" * 55)
+    
+    DATA_FOLDER = "data"
+    
+   
+        
+        
+    
+    
