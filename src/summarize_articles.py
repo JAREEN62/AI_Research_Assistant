@@ -30,6 +30,7 @@ Always respond in this exact JSON format:
 
 chain = prompt | llm | StrOutputParser()
 
+
 def load_all_articles(data_folder: str) -> list:
     """
     Loads all JSON files from your data/ folder.
@@ -68,6 +69,7 @@ def load_all_articles(data_folder: str) -> list:
         all_articles.extend(articles) 
 
     return all_articles
+
 
 def summarize_article(article: dict) -> dict:
     """
@@ -108,6 +110,7 @@ def summarize_article(article: dict) -> dict:
     except Exception as e:
         print(f" ❌ Error summarizing article:{e}")
         return {"title": title,"error": str(e)}
+    
     
 def save_summaries(summaries: list,data_folder: str)->str:
     """
@@ -165,7 +168,17 @@ if __name__ =="__main__":
         result = summarize_article(article)
         summaries.append(result)
         
+    #preview of the summary
+    print("\n\n---- Preview of first summary ----")   
+    if summaries and "summary" in summaries[0]:
+        s = summaries[0]["summary"]
+        print(f"Title:              {summaries[0]['title'][:70]}")
+        print(f"One liner:          {s.get('one liner', '')}")
+        print(f"Key contribution:   {s.get('Key_contribution', '')}")
+        print(f"Why it matters:     {s.get('why_it_matters', '')}")
+        print(f"Keywords:           {', '.join(s.get('keywords',[]))}")
         
-        
+    
+    
     
     
