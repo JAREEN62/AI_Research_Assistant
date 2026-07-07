@@ -109,6 +109,29 @@ def summarize_article(article: dict) -> dict:
         print(f" ❌ Error summarizing article:{e}")
         return {"title": title,"error": str(e)}
     
-                                             
+def save_summaries(summaries: list,data_folder: str)->str:
+    """
+    Saves all summaries to a single JSON file.
+    WHY a new file? Keep raw data, separate from processed data.
+    That way you can always re-run the summarizer without re-fetching.
+    """
     
+    from datetime import datetime
     
+    os.makedirs(data_folder, exist_ok=True)
+    filename = os.path.join(
+        data_folder,
+        f"summaries_{datetime.now().strftime('%Y%m%d_%H%M%S')}.json"
+        )
+    
+    output={
+        "generated_at":     datetime.now().isoformat(),
+        "total_articles":   len(summaries),
+        "summaries":        summaries   
+    }
+    
+    with open(filename, "w", encoding="utf-8") as f:
+        json.dump(output, f, indent=2, ensure_ascii=False)
+        
+    print(f"\n 📁 Saved {len(summaries)} summaries -> {filename}")
+    return filename
