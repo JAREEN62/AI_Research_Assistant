@@ -153,7 +153,17 @@ if __name__ =="__main__":
         exit() # exit instead of crashing with a confused error
         
     print(f"\n Total articles to summarize: {len(articles)}")
-   
+    
+    #testing with 3 first to make sure 
+    articles_to_process = articles[:3]
+    print(f"Processing first{len(articles_to_process)} articles (test run)...")
+    
+    #summarize each article
+    summaries = []
+    for i, article in enumerate(articles_to_process,1):
+        print(f"[{i}/{len(articles_to_process)}]", end="")
+        result = summarize_article(article)
+        summaries.append(result)
         
         
         
