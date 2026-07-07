@@ -146,7 +146,15 @@ if __name__ =="__main__":
     
     DATA_FOLDER = "data"
     
+    # To read all JSON files
+    articles = load_all_articles(DATA_FOLDER) 
+    
+    if not articles: #if no articles are loaded 
+        exit() # exit instead of crashing with a confused error
+        
+    print(f"\n Total articles to summarize: {len(articles)}")
    
+        
         
         
     
