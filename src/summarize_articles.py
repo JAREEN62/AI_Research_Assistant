@@ -178,7 +178,8 @@ if __name__ =="__main__":
         print(f"Why it matters:     {s.get('why_it_matters', '')}")
         print(f"Keywords:           {', '.join(s.get('keywords',[]))}")
         
-    
+    #save all the summaries
+    save_summaries(summaries, DATA_FOLDER)
     
     
     
