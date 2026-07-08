@@ -1,11 +1,12 @@
 import os
 import json 
-import glob
+import glob  
 from dotenv import load_dotenv
 
-from langchain_anthropic import ChatAnthropic
+from langchain_anthropic import ChatAnthropic  
 from langchain_core.prompts import ChatPromptTemplate
 from langchain_core.output_parsers import StrOutputParser
+
 
 load_dotenv()
 
@@ -40,7 +41,9 @@ def load_all_articles(data_folder: str) -> list:
     
     # find all .JSON files in the data folder
     pattern = os.path.join(data_folder,"*.json") #builds a file path for any operating system carefully.
-    json_files = glob.glob(pattern)
+    json_files = [f for f in glob.glob(pattern) 
+              if not os.path.basename(f).startswith("summaries_")]
+    # json_files = glob.glob(pattern)
     
     if not json_files:
          print(f"❌ No JSON files found in: {data_folder}")
@@ -180,6 +183,5 @@ if __name__ =="__main__":
         
     #save all the summaries
     save_summaries(summaries, DATA_FOLDER)
-    
     
     
