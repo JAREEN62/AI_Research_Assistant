@@ -83,6 +83,8 @@ def summarize_article(article: dict) -> dict:
     """
     title = article.get("titled", "untitled")
     abstract = article.get("summary", "No abstract available.") # In fetch_articles.py the abstract of the papers is stored under the key "summary" - so thats the key we read here
+    print(f"   Title found: {title[:50]}")   # ← add this temporarily
+    print(f"   Abstract length: {len(abstract)} chars")  # ← and this
     
     print(f"\n Summarizing: {title[:60]}...")
     
