@@ -61,6 +61,9 @@ def load_all_articles(data_folder: str) -> list:
         if isinstance(data, dict) and "articles" in data:
             articles = data["articles"]
             topic = data.get("topic", "unknown")
+            if not articles:
+                print(f"   ⚠️  Skipping {filename} — no articles found")
+                continue
         elif isinstance(data, list): 
             articles = data # haldles the older format too
             
