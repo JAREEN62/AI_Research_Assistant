@@ -171,7 +171,7 @@ if __name__ =="__main__":
     print(f"\n Total articles to summarize: {len(articles)}")
     
     #testing with 3 first to make sure 
-    articles_to_process = articles[:3]
+    articles_to_process = articles
     print(f"Processing first{len(articles_to_process)} articles (test run)...")
     
     #summarize each article
