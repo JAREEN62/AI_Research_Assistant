@@ -81,11 +81,9 @@ def summarize_article(article: dict) -> dict:
     """
     sends one article to claude and returns a structured summary.
     """
-    title = article.get("titled", "untitled")
+    title = article.get("title", "untitled")
     abstract = article.get("summary", "No abstract available.") # In fetch_articles.py the abstract of the papers is stored under the key "summary" - so thats the key we read here
-    print(f"   Title found: {title[:50]}")   # ← add this temporarily
-    print(f"   Abstract length: {len(abstract)} chars")  # ← and this
-    
+
     print(f"\n Summarizing: {title[:60]}...")
     
     try:
@@ -96,8 +94,13 @@ def summarize_article(article: dict) -> dict:
             }
         )
         
-        summary=json.loads(raw_response.strip()) # converts string produced by claude in to actuall python dictioinary(JSON) format.
-                                                #strip() - removes white spaces produced by claude
+        cleaned_response = raw_response.strip()
+        if cleaned_response.startswith("```"):
+            # strip a leading ```json / ``` fence and trailing ``` that claude sometimes wraps the JSON in
+            cleaned_response = cleaned_response.strip("`")
+            cleaned_response = cleaned_response.removeprefix("json").strip()
+
+        summary=json.loads(cleaned_response) # converts string produced by claude in to actuall python dictioinary(JSON) format.
 
         return {
                 "title":      title,
@@ -110,8 +113,10 @@ def summarize_article(article: dict) -> dict:
     except json.JSONDecodeError:
         print(f" ⚠️ Claude didn't return clear JSON for this article. Saving raw response.")
         return{
-            "title": title,
-            "author": article.get("authors",[]),
+            "title":     title,
+            "authors":   article.get("authors", []),
+            "published": article.get("published", ""),
+            "link":      article.get("link", ""),
             "raw_response": raw_response
         }
         

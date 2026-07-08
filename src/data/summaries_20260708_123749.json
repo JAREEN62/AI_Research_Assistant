@@ -1,0 +1,48 @@
+{
+  "generated_at": "2026-07-08T12:37:49.136235",
+  "total_articles": 3,
+  "summaries": [
+    {
+      "title": "Learning Action Priors for Cross-embodiment Robot Manipulation",
+      "author": [
+        "Dong Jing",
+        "Tianqi Zhang",
+        "Jiaqi Liu",
+        "Jinman Zhao",
+        "Zelong Sun",
+        "Li Erran Li",
+        "Zhiwu Lu",
+        "Mingyu Ding"
+      ],
+      "raw_response": "```json\n{\n  \"one_liner\": \"This paper improves Vision-Language-Action models by pretraining the action module with motion priors before visual-language alignment, enabling faster learning and better cross-embodiment robot manipulation.\",\n  \"key_contribution\": \"A two-stage training framework where Stage 1 learns temporal motion structure from unlabeled action trajectories using flow-matching, then Stage 2 transfers these action priors to VLA training through decoder reuse and latent distillation, plus a compact history compressor from the encoder.\",\n  \"why_it_matters\": \"VLA models struggle because action modules learn physical dynamics from scratch while simultaneously aligning with visual-language features. This work explicitly decouples motion learning from cross-modal alignment, leading to faster convergence, higher success rates (especially on real-world data-scarce tasks), and better generalization—directly addressing a practical bottleneck in robot learning.\",\n  \"keywords\": [\"Vision-Language-Action models\", \"cross-embodiment robot manipulation\", \"action priors\", \"flow-matching\", \"temporal motion learning\"]\n}\n```"
+    },
+    {
+      "title": "RevengeBench: Reverse Engineering Code-Space Policies from Behavioral Experiments",
+      "author": [
+        "Babak Rahmani",
+        "Sebastian Dziadzio",
+        "Joschka Strüber",
+        "Sergio Hernández-Gutiérrez",
+        "Matthias Bethge"
+      ],
+      "raw_response": "```json\n{\n  \"one_liner\": \"RevengeBench is a benchmark for reconstructing hidden game-playing policies as executable code by observing behavior and designing strategic experiments.\",\n  \"key_contribution\": \"A systematic benchmark with 75 LLM-generated game policies that enables researchers to test how well AI agents can reverse-engineer decision programs from behavioral observations, with optional ability to design targeted experimental probes.\",\n  \"why_it_matters\": \"This work tackles opponent modeling and policy interpretability—understanding how to infer what an agent is doing from what it does. The benchmark shows that designed experiments significantly improve code recovery (34-72% success rates), and recovered policies provide competitive advantage. This is relevant for adversarial robustness, AI interpretability, and building agents that can learn from observing other agents.\",\n  \"keywords\": [\"inverse problems\", \"opponent modeling\", \"policy interpretability\", \"program synthesis\", \"behavioral experiments\", \"LLM-based policies\", \"game environments\"]\n}\n```"
+    },
+    {
+      "title": "ForceBand: Learning Forceful Manipulation with sEMG",
+      "author": [
+        "Botao He",
+        "Zhi Wang",
+        "Linna Kuang",
+        "Ishaan Ghosh",
+        "Jitendra Malik",
+        "Cornelia Fermuller",
+        "Tingfan Wu",
+        "Jiayuan Mao",
+        "Ruoshi Liu",
+        "Haozhi Qi",
+        "Yiannis Aloimonos"
+      ],
+      "raw_response": "```json\n{\n  \"one_liner\": \"ForceBand is a wearable sEMG system that extracts force information from human muscle signals to create force-enriched robot manipulation demonstrations.\",\n  \"key_contribution\": \"A low-cost wrist-worn sEMG+IMU device paired with an EMG2Force model that predicts per-finger forces from muscle activity, enabling robots to learn force-sensitive manipulation skills from human demonstrations without motion capture systems.\",\n  \"why_it_matters\": \"Force control is critical for delicate manipulation tasks but typically missing from video/mocap demonstrations. This work bridges that gap by inferring forces from readily available EMG signals, making it easier to scale robot learning from human data. The 87% success rate on force-sensitive tasks shows this approach actually works for real manipulation.\",\n  \"keywords\": [\"sEMG\", \"force prediction\", \"learning from demonstrations\", \"robot manipulation\", \"wearable sensors\"]\n}\n```"
+    }
+  ]
+}

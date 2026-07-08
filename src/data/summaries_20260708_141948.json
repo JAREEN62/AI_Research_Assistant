@@ -1,0 +1,94 @@
+{
+  "generated_at": "2026-07-08T14:19:48.210152",
+  "total_articles": 3,
+  "summaries": [
+    {
+      "title": "Learning Action Priors for Cross-embodiment Robot Manipulation",
+      "authors": [
+        "Dong Jing",
+        "Tianqi Zhang",
+        "Jiaqi Liu",
+        "Jinman Zhao",
+        "Zelong Sun",
+        "Li Erran Li",
+        "Zhiwu Lu",
+        "Mingyu Ding"
+      ],
+      "published": "2026-06-24T17:59:56Z",
+      "link": "https://arxiv.org/abs/2606.26095v1",
+      "summary": {
+        "one_liner": "A two-stage training framework that pretrains action modules with motion priors before vision-language-action alignment to improve cross-embodiment robot manipulation.",
+        "key_contribution": "The paper proposes decoupling action prior learning from vision-language alignment by: (1) Stage 1 - pretraining an action encoder-decoder on raw trajectories using flow-matching to learn temporal motion structure independently, and (2) Stage 2 - transferring this prior to VLA training via decoder reuse and latent distillation, while reusing the encoder as a compact history compressor.",
+        "why_it_matters": "VLA models typically struggle because action modules learn motion dynamics and cross-modal alignment simultaneously from scratch. This work shows that explicitly teaching robots temporal action structure before vision-language grounding leads to faster convergence, higher success rates, and better generalization—especially critical for data-scarce real-world scenarios and multi-embodiment settings.",
+        "keywords": [
+          "Vision-Language-Action models",
+          "Robot manipulation",
+          "Cross-embodiment transfer",
+          "Motion priors",
+          "Two-stage training",
+          "Flow matching",
+          "Action pretraining"
+        ]
+      }
+    },
+    {
+      "title": "RevengeBench: Reverse Engineering Code-Space Policies from Behavioral Experiments",
+      "authors": [
+        "Babak Rahmani",
+        "Sebastian Dziadzio",
+        "Joschka Strüber",
+        "Sergio Hernández-Gutiérrez",
+        "Matthias Bethge"
+      ],
+      "published": "2026-06-24T17:59:46Z",
+      "link": "https://arxiv.org/abs/2606.26094v1",
+      "summary": {
+        "one_liner": "RevengeBench is a benchmark for reconstructing hidden game-playing policies as executable code by observing behavior and designing targeted experiments.",
+        "key_contribution": "A new benchmark with 75 LLM-generated game policies where learners must reverse-engineer the underlying decision code from behavioral observations, with the ability to design custom opponent experiments to probe the target policy.",
+        "why_it_matters": "This work tackles the inverse problem of reconstructing interpretable policies from observations—valuable for opponent modeling, policy interpretability, and understanding how to extract latent mechanisms from limited behavioral data. The benchmark reveals that LLMs vary widely (34-72%) in their ability to recover policies, and successfully reconstructed policies provide real competitive advantages in tournaments.",
+        "keywords": [
+          "policy reverse engineering",
+          "behavioral inference",
+          "inverse problems",
+          "code generation",
+          "opponent modeling",
+          "game agents",
+          "LLM evaluation",
+          "interpretability"
+        ]
+      }
+    },
+    {
+      "title": "ForceBand: Learning Forceful Manipulation with sEMG",
+      "authors": [
+        "Botao He",
+        "Zhi Wang",
+        "Linna Kuang",
+        "Ishaan Ghosh",
+        "Jitendra Malik",
+        "Cornelia Fermuller",
+        "Tingfan Wu",
+        "Jiayuan Mao",
+        "Ruoshi Liu",
+        "Haozhi Qi",
+        "Yiannis Aloimonos"
+      ],
+      "published": "2026-06-24T17:59:35Z",
+      "link": "https://arxiv.org/abs/2606.26093v1",
+      "summary": {
+        "one_liner": "ForceBand is a wearable sEMG system that captures human muscle signals to extract fine-grained finger forces from demonstrations, enabling robots to learn force-sensitive manipulation tasks.",
+        "key_contribution": "A wrist-worn electromyography (sEMG) device paired with an EMG2Force neural network model that translates human muscle activity into per-finger force predictions, allowing force-enriched robot learning from human demonstrations without expensive force-sensing gloves.",
+        "why_it_matters": "Force feedback is critical for delicate manipulation (grasping fragile objects, applying precise pressure), but typical learning sources like videos and motion capture lack this information. ForceBand provides a low-cost, scalable way to add contact force labels to human demonstrations, enabling robots to learn nuanced manipulation skills that require force control—something vision-based approaches struggle with.",
+        "keywords": [
+          "sEMG",
+          "force prediction",
+          "imitation learning",
+          "robot manipulation",
+          "human demonstrations",
+          "EMG2Force",
+          "force-sensitive grasping"
+        ]
+      }
+    }
+  ]
+}

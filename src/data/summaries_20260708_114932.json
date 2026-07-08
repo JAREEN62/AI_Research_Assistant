@@ -1,0 +1,48 @@
+{
+  "generated_at": "2026-07-08T11:49:32.441019",
+  "total_articles": 3,
+  "summaries": [
+    {
+      "title": "untitled",
+      "author": [
+        "Dong Jing",
+        "Tianqi Zhang",
+        "Jiaqi Liu",
+        "Jinman Zhao",
+        "Zelong Sun",
+        "Li Erran Li",
+        "Zhiwu Lu",
+        "Mingyu Ding"
+      ],
+      "raw_response": "```json\n{\n  \"one_liner\": \"A two-stage framework that pretrains action modules with motion priors before vision-language-action alignment, enabling faster learning and better cross-embodiment robot control.\",\n  \"key_contribution\": \"The paper introduces a flow-matching-based pretraining stage that teaches action modules temporal dynamics from unlabeled trajectories before VLA training, then transfers this prior through decoder reuse and latent distillation during the second stage.\",\n  \"why_it_matters\": \"VLA models currently struggle with learning physical motion dynamics while simultaneously aligning vision and language—this work decouples those problems, leading to faster convergence, higher success rates, and dramatically better performance on real-world robotic tasks with limited data. The approach also provides an efficient history compression mechanism.\",\n  \"keywords\": [\"Vision-Language-Action\", \"robot learning\", \"motion priors\", \"flow matching\", \"cross-embodiment\", \"pretraining\"]\n}\n```"
+    },
+    {
+      "title": "untitled",
+      "author": [
+        "Babak Rahmani",
+        "Sebastian Dziadzio",
+        "Joschka Strüber",
+        "Sergio Hernández-Gutiérrez",
+        "Matthias Bethge"
+      ],
+      "raw_response": "```json\n{\n  \"one_liner\": \"A benchmark that evaluates whether AI systems can reconstruct hidden game-playing policies from observed behavior and controlled experiments, treating opponent modeling as an inverse problem in code space.\",\n  \"key_contribution\": \"RevengeBench: a dataset of 75 LLM-generated game policies with metrics to measure how well learners can reverse-engineer executable code from behavioral traces, with optional ability to design targeted experiments to probe the hidden policy.\",\n  \"why_it_matters\": \"This work bridges interpretability and opponent modeling—key challenges in multi-agent AI systems. It provides a concrete way to evaluate how well models can infer latent decision-making logic from observations, has direct applications to game-playing AI and strategy learning, and demonstrates that active experimentation (designing custom opponents) significantly improves policy reconstruction compared to passive observation alone.\",\n  \"keywords\": [\"opponent modeling\", \"policy recovery\", \"inverse problems\", \"behavioral analysis\", \"code generation\", \"interpretability\", \"game playing\", \"multi-agent systems\"]\n}\n```"
+    },
+    {
+      "title": "untitled",
+      "author": [
+        "Botao He",
+        "Zhi Wang",
+        "Linna Kuang",
+        "Ishaan Ghosh",
+        "Jitendra Malik",
+        "Cornelia Fermuller",
+        "Tingfan Wu",
+        "Jiayuan Mao",
+        "Ruoshi Liu",
+        "Haozhi Qi",
+        "Yiannis Aloimonos"
+      ],
+      "raw_response": "```json\n{\n  \"one_liner\": \"ForceBand is a wrist-worn EMG sensor system that infers finger forces from muscle activity, enabling robots to learn manipulation skills from human demonstrations that include critical force information.\",\n  \"key_contribution\": \"The paper introduces ForceBand, a low-cost sEMG+IMU system with a pre-trained EMG2Force model that predicts per-finger forces from human muscle signals, allowing force-augmented robot demonstrations without expensive motion capture or force sensors.\",\n  \"why_it_matters\": \"Force feedback is essential for robot manipulation tasks (grasping, squeezing, placing objects), but standard human demonstration sources (videos, mocap) lack this data. ForceBand solves this scalability problem by making it easy to collect force-rich demonstrations with just a wristband and camera, potentially improving robot learning for delicate or object-specific manipulation tasks.\",\n  \"keywords\": [\n    \"robot manipulation\",\n    \"learning from demonstrations\",\n    \"sEMG sensing\",\n    \"force prediction\",\n    \"wearable sensors\"\n  ]\n}\n```"
+    }
+  ]
+}
