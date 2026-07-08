@@ -42,7 +42,7 @@ def load_all_articles(data_folder: str) -> list:
     # find all .JSON files in the data folder
     pattern = os.path.join(data_folder,"*.json") #builds a file path for any operating system carefully.
     json_files = [f for f in glob.glob(pattern) 
-              if not os.path.basename(f).startswith("summaries_")]
+              if not os.path.basename(f).startswith("summaries_")] #This filters out any file whose name starts with "summaries_" — so your output files never get read back as input.
     # json_files = glob.glob(pattern)
     
     if not json_files:
