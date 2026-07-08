@@ -1,0 +1,524 @@
+{
+  "generated_at": "2026-07-08T15:54:25.283176",
+  "total_articles": 20,
+  "summaries": [
+    {
+      "title": "Learning Action Priors for Cross-embodiment Robot Manipulation",
+      "authors": [
+        "Dong Jing",
+        "Tianqi Zhang",
+        "Jiaqi Liu",
+        "Jinman Zhao",
+        "Zelong Sun",
+        "Li Erran Li",
+        "Zhiwu Lu",
+        "Mingyu Ding"
+      ],
+      "published": "2026-06-24T17:59:56Z",
+      "link": "https://arxiv.org/abs/2606.26095v1",
+      "summary": {
+        "one_liner": "A two-stage training framework that pretrains action modules with motion priors before vision-language-action alignment to improve cross-embodiment robot manipulation.",
+        "key_contribution": "The paper proposes pretraining robot action modules using flow-matching on unconditioned trajectories (Stage 1) before fine-tuning on vision-language-action tasks (Stage 2), equipping policies with explicit temporal motion structure that transfers across different robot embodiments.",
+        "why_it_matters": "VLA models typically learn action dynamics from scratch while simultaneously aligning visual-language features, which is inefficient and particularly challenging with limited real-world data. This work shows that decoupling motion learning from cross-modal alignment significantly improves convergence speed, success rates, and generalization—directly applicable to practical robotics where data is scarce.",
+        "keywords": [
+          "Vision-Language-Action models",
+          "Cross-embodiment robot learning",
+          "Action priors",
+          "Flow matching",
+          "Robot manipulation",
+          "Multi-stage pretraining"
+        ]
+      }
+    },
+    {
+      "title": "RevengeBench: Reverse Engineering Code-Space Policies from Behavioral Experiments",
+      "authors": [
+        "Babak Rahmani",
+        "Sebastian Dziadzio",
+        "Joschka Strüber",
+        "Sergio Hernández-Gutiérrez",
+        "Matthias Bethge"
+      ],
+      "published": "2026-06-24T17:59:46Z",
+      "link": "https://arxiv.org/abs/2606.26094v1",
+      "summary": {
+        "one_liner": "RevengeBench is a benchmark for reconstructing hidden game-playing policies as executable code by observing behavior and designing targeted experiments.",
+        "key_contribution": "Introduces a computational inverse problem where learners must reverse-engineer decision-making code from behavioral traces, with the ability to design controlled experiments (custom opponents) to probe the hidden policy's behavior.",
+        "why_it_matters": "This work bridges interpretability and opponent modeling: it enables understanding how agents make decisions by recovering their actual code, not just their outputs. For AI engineers, this is crucial for adversarial testing, understanding black-box models, and building better strategies against unknown opponents. The benchmark shows practical value—reconstructed policies help weaker models compete more effectively.",
+        "keywords": [
+          "policy recovery",
+          "code generation",
+          "inverse problems",
+          "opponent modeling",
+          "interpretability",
+          "behavioral experiments",
+          "game-playing agents"
+        ]
+      }
+    },
+    {
+      "title": "ForceBand: Learning Forceful Manipulation with sEMG",
+      "authors": [
+        "Botao He",
+        "Zhi Wang",
+        "Linna Kuang",
+        "Ishaan Ghosh",
+        "Jitendra Malik",
+        "Cornelia Fermuller",
+        "Tingfan Wu",
+        "Jiayuan Mao",
+        "Ruoshi Liu",
+        "Haozhi Qi",
+        "Yiannis Aloimonos"
+      ],
+      "published": "2026-06-24T17:59:35Z",
+      "link": "https://arxiv.org/abs/2606.26093v1",
+      "summary": {
+        "one_liner": "ForceBand is a wearable sEMG system that captures human muscle activity to augment robot learning demonstrations with precise fingertip force information.",
+        "key_contribution": "A practical pipeline combining a wrist-worn sEMG sensor with a pre-trained EMG2Force model that predicts per-finger forces, enabling force-enriched robot demonstrations without expensive force-sensing hardware.",
+        "why_it_matters": "Learning manipulation from human demos usually lacks contact force data, which is critical for tasks like grasping and squeezing. ForceBand solves this cheaply and scalably—developers can now train robots on forceful manipulation tasks by just having humans wear a simple wristband while demonstrating, rather than requiring specialized force sensors or motion capture.",
+        "keywords": [
+          "imitation learning",
+          "force control",
+          "sEMG sensing",
+          "robot manipulation",
+          "human demonstrations",
+          "wearable sensors"
+        ]
+      }
+    },
+    {
+      "title": "On-Policy Self-Distillation with Sampled Demonstrations Reduces Output Diversity",
+      "authors": [
+        "Andrei Liviu Nicolicioiu",
+        "Mohammad Pezeshki",
+        "Aaron Courville"
+      ],
+      "published": "2026-06-24T17:59:02Z",
+      "link": "https://arxiv.org/abs/2606.26091v1",
+      "summary": {
+        "one_liner": "On-policy self-distillation improves single-attempt accuracy but reduces output diversity by amplifying the model's existing biases, causing performance degradation on out-of-distribution problems.",
+        "key_contribution": "The paper identifies and theoretically analyzes how self-distillation with sampled demonstrations concentrates probability mass on already-dominant modes through compounding biases, unlike standard RL which preserves probability ratios among equally correct solutions.",
+        "why_it_matters": "Developers using self-distillation for code/reasoning tasks should know it trades diversity for pass@1 accuracy—your model will reliably produce similar solutions but fail when diverse strategies are needed. This is crucial for production systems requiring robustness across different problem types.",
+        "keywords": [
+          "on-policy self-distillation",
+          "output diversity",
+          "pass@k accuracy",
+          "reinforcement learning",
+          "mode collapse"
+        ]
+      }
+    },
+    {
+      "title": "Neglected Free Lunch from Post-training: Progress Advantage for LLM Agents",
+      "authors": [
+        "Changdae Oh",
+        "Wendi Li",
+        "Seongheon Park",
+        "Samuel Yeh",
+        "Tanwi Mallick",
+        "Sharon Li"
+      ],
+      "published": "2026-06-24T17:54:08Z",
+      "link": "https://arxiv.org/abs/2606.26080v1",
+      "summary": {
+        "one_liner": "A new method called 'progress advantage' uses log-probability ratios from RL-trained LLM policies to provide step-level scoring for agent evaluation without needing separate reward model training.",
+        "key_contribution": "The paper shows that the log-probability ratio between an RL-trained policy and its reference policy mathematically recovers the optimal advantage function, providing free step-level evaluation signals as a byproduct of standard RL post-training.",
+        "why_it_matters": "Building process reward models for long-horizon agent tasks is expensive and difficult due to annotation costs and environment stochasticity. This approach eliminates that bottleneck entirely—you get high-quality step-level scoring for free during normal RL training, enabling better test-time scaling, uncertainty quantification, and failure diagnosis for LLM agents.",
+        "keywords": [
+          "process reward models",
+          "reinforcement learning",
+          "advantage functions",
+          "LLM agents",
+          "step-level evaluation"
+        ]
+      }
+    },
+    {
+      "title": "Variational Autoencoder Layer",
+      "authors": [
+        "Gananath R"
+      ],
+      "published": "2026-06-24T14:48:23Z",
+      "link": "https://arxiv.org/abs/2606.25900v1",
+      "summary": {
+        "one_liner": "This paper proposes integrating Variational Autoencoders as reusable neural network layers rather than standalone models, with a new training strategy to optimize their performance.",
+        "key_contribution": "A novel VAE layer architecture that can be embedded within larger neural networks, along with a specialized training strategy designed specifically for this layered approach.",
+        "why_it_matters": "Enables developers to leverage VAEs' probabilistic and generative properties (smooth latent space, data generation) as modular components in deep learning pipelines, potentially improving model flexibility, composability, and performance on complex tasks.",
+        "keywords": [
+          "Variational Autoencoder",
+          "neural network layer",
+          "probabilistic models",
+          "generative models",
+          "latent space"
+        ]
+      }
+    },
+    {
+      "title": "Enhancing Brain MRI Anomaly Detection and Reasoning with ROI Rethink and Synthetic Data",
+      "authors": [
+        "Shangkun Li",
+        "Jie Xu",
+        "Yi Guo",
+        "Zeju Li",
+        "Yuanyuan Wang"
+      ],
+      "published": "2026-06-24T14:41:27Z",
+      "link": "https://arxiv.org/abs/2606.25894v1",
+      "summary": {
+        "one_liner": "BrReMark improves brain MRI diagnosis by having models explicitly mark regions of interest, verify findings, and use synthetic data augmentation to reduce hallucinations and improve trustworthiness.",
+        "key_contribution": "A framework that combines explicit bounding box marking of suspected abnormalities with hypothesis-verification reasoning, trained via supervised fine-tuning and reinforcement learning, plus domain randomization-based synthetic pathology augmentation to handle out-of-distribution cases.",
+        "why_it_matters": "Current medical vision-language models make diagnoses as black boxes without showing their reasoning, leading to unauditable outputs and false positives on normal scans. This work makes models interpretable and trustworthy by forcing them to ground conclusions in specific image regions and verify evidence—critical for clinical adoption. The 45.7% reduction in false positives on rare pathologies is especially valuable for preventing misdiagnosis.",
+        "keywords": [
+          "medical vision-language models",
+          "brain MRI",
+          "spatial grounding",
+          "explainability",
+          "synthetic data augmentation",
+          "reinforcement learning",
+          "hallucination reduction"
+        ]
+      }
+    },
+    {
+      "title": "A Physics-Informed Statistical Learning Model for Long-Term Fragmentation Cloud Propagation",
+      "authors": [
+        "Yema Paul",
+        "Diogo Sousa",
+        "Albert Servitje",
+        "Rodrigo Pariente",
+        "Emmanuel Delande",
+        "Christophe Taillan",
+        "Joan Pau Sanchez"
+      ],
+      "published": "2026-06-24T14:40:41Z",
+      "link": "https://arxiv.org/abs/2606.25893v1",
+      "summary": {
+        "one_liner": "A hierarchical generative model that efficiently predicts how orbital debris clouds spread over time, replacing expensive simulations with fast surrogate predictions.",
+        "key_contribution": "Introduces HGDM (Hierarchical Generative Density Model) as a physics-informed surrogate that accurately captures multi-dimensional debris cloud evolution while reducing computational cost by 100x and storage by 1000x compared to Monte Carlo simulations.",
+        "why_it_matters": "Space debris is a critical problem for satellite operations and space sustainability. This model enables fast, scalable prediction of debris cloud propagation without running expensive simulations, making it practical for large-scale collision cascade modeling and Kessler syndrome risk assessment.",
+        "keywords": [
+          "orbital debris",
+          "surrogate modeling",
+          "generative models",
+          "space sustainability",
+          "Kessler syndrome",
+          "Monte Carlo simulation"
+        ]
+      }
+    },
+    {
+      "title": "A 3D-Printable Dataset for Fair Testing and Comparisons of Tactile Sensors",
+      "authors": [
+        "Dexter R. Shepherd",
+        "Nicolas Herzig",
+        "Phil Husbands",
+        "Andrew Philippides",
+        "Chris Johnson",
+        "William Kimbell"
+      ],
+      "published": "2026-06-24T14:27:16Z",
+      "link": "https://arxiv.org/abs/2606.25886v1",
+      "summary": {
+        "one_liner": "A standardized, 3D-printable texture dataset with mathematically defined surfaces enables fair and reproducible comparison of tactile sensors across different hardware.",
+        "key_contribution": "First open-source benchmark of parametrically generated, 3D-printable textures (based on sine-wave and Fourier functions) designed to be reliably fabricated across printers and filament types, with analysis of how print quality affects tactile sensor consistency.",
+        "why_it_matters": "Tactile sensing research has lacked standardized, reproducible test surfaces—researchers had to use whatever textures were available, making cross-sensor comparisons unfair and results unreproducible. This dataset solves that by providing mathematically defined, physically reproducible textures that any lab can print, enabling rigorous benchmarking of tactile sensors and reproducible AI model training.",
+        "keywords": [
+          "tactile sensing",
+          "3D printing",
+          "benchmark dataset",
+          "texture generation",
+          "sensor reproducibility",
+          "cross-printer generalization"
+        ]
+      }
+    },
+    {
+      "title": "An Analysis of Posterior Collapse, Parameterization and Initialization in Variational Deep Gaussian Processes",
+      "authors": [
+        "Francisco Javier Sáez-Maldonado",
+        "Juan Maroñas",
+        "Daniel Hernández-Lobato"
+      ],
+      "published": "2026-06-24T14:25:39Z",
+      "link": "https://arxiv.org/abs/2606.25882v1",
+      "summary": {
+        "one_liner": "This paper analyzes and solves the posterior collapse problem in Deep Gaussian Processes through better understanding of parameterization, initialization, and the role of linear prior means.",
+        "key_contribution": "The authors identify that linear prior means help Deep Gaussian Processes avoid posterior collapse not by preventing non-injectivity in deep models, but by improving optimization conditioning at initialization. They propose an alternative zero-mean initialization scheme that achieves the same benefits without constraining the prior, and provide rigorous analysis of why whitened parameterizations improve stability.",
+        "why_it_matters": "Posterior collapse is a critical failure mode in variational deep models that makes them ignore data and explain everything as noise. This work provides practical solutions (better initialization) and theoretical understanding of when and why they work, enabling practitioners to train DGPs with principled priors rather than optimization hacks. The insights about parameterization choice and initialization also apply to other deep variational models.",
+        "keywords": [
+          "Deep Gaussian Processes",
+          "Posterior Collapse",
+          "Variational Inference",
+          "Parameterization",
+          "Initialization",
+          "Optimization Conditioning"
+        ]
+      }
+    },
+    {
+      "title": "Learning Action Priors for Cross-embodiment Robot Manipulation",
+      "authors": [
+        "Dong Jing",
+        "Tianqi Zhang",
+        "Jiaqi Liu",
+        "Jinman Zhao",
+        "Zelong Sun",
+        "Li Erran Li",
+        "Zhiwu Lu",
+        "Mingyu Ding"
+      ],
+      "published": "2026-06-24T17:59:56Z",
+      "link": "https://arxiv.org/abs/2606.26095v1",
+      "summary": {
+        "one_liner": "A two-stage training framework that pretrains action modules with motion priors before vision-language-action alignment to improve cross-embodiment robot manipulation learning.",
+        "key_contribution": "The paper introduces a novel approach to VLA models by separating action prior learning from cross-modal alignment: Stage 1 uses flow-matching to learn temporal motion structure from unlabeled trajectories, then Stage 2 transfers this prior to VLA training through decoder reuse and latent distillation, resulting in faster convergence and better generalization across robot embodiments.",
+        "why_it_matters": "Most VLA models force the action module to learn motion dynamics while simultaneously learning vision-language alignment, which is inefficient and data-hungry. This work shows that explicitly pre-training action priors significantly improves sample efficiency and real-world performance—critical for practical robot learning where data is expensive. The approach is also embodiment-agnostic, making it broadly applicable across different robot platforms.",
+        "keywords": [
+          "Vision-Language-Action models",
+          "Robot manipulation",
+          "Cross-embodiment learning",
+          "Motion priors",
+          "Flow matching",
+          "Multi-stage training",
+          "Action pretraining"
+        ]
+      }
+    },
+    {
+      "title": "ForceBand: Learning Forceful Manipulation with sEMG",
+      "authors": [
+        "Botao He",
+        "Zhi Wang",
+        "Linna Kuang",
+        "Ishaan Ghosh",
+        "Jitendra Malik",
+        "Cornelia Fermuller",
+        "Tingfan Wu",
+        "Jiayuan Mao",
+        "Ruoshi Liu",
+        "Haozhi Qi",
+        "Yiannis Aloimonos"
+      ],
+      "published": "2026-06-24T17:59:35Z",
+      "link": "https://arxiv.org/abs/2606.26093v1",
+      "summary": {
+        "one_liner": "ForceBand is a wearable sEMG armband that captures human muscle activity to generate force-enriched robot manipulation demonstrations without requiring expensive force sensors.",
+        "key_contribution": "A low-cost wrist-worn system that predicts per-finger contact forces from electromyography (sEMG) and IMU signals, enabling robots to learn force-sensitive manipulation tasks from human demonstrations with only video and muscle data.",
+        "why_it_matters": "Learning robot manipulation from human demos is practical, but existing methods miss critical force information needed for tasks like gentle grasping or precise squeezing. ForceBand solves this by making force data collection cheap and scalable—developers can now collect force-aware training data without expensive force-sensing gloves, dramatically improving a robot's ability to handle objects with varying properties.",
+        "keywords": [
+          "sEMG",
+          "robot manipulation",
+          "force control",
+          "learning from demonstrations",
+          "wearable sensors",
+          "pick-and-place",
+          "EMG2Force prediction"
+        ]
+      }
+    },
+    {
+      "title": "Bayesian Nonparametric Privacy-Preserving Synthetic Data Generation: I. Discrete Data",
+      "authors": [
+        "Maria Chiara Menicucci",
+        "Mario Beraha",
+        "Stefano Favaro",
+        "Riccardo Lazzarini"
+      ],
+      "published": "2026-06-24T17:47:21Z",
+      "link": "https://arxiv.org/abs/2606.26073v1",
+      "summary": {
+        "one_liner": "A Bayesian nonparametric method for generating privacy-preserving synthetic discrete data using Pitman-Yor process priors with formal differential privacy guarantees.",
+        "key_contribution": "The paper develops a principled framework combining Pitman-Yor process priors with differential privacy theory to generate synthetic discrete data, providing formal privacy guarantees across different parameter regimes and proving convergence rates that quantify the privacy-utility tradeoff.",
+        "why_it_matters": "As data privacy becomes increasingly critical, this work provides a theoretically grounded approach for practitioners to release discrete datasets (common in real applications) while maintaining both formal privacy guarantees and statistical utility. The explicit convergence rates help practitioners understand the concrete cost of privacy protection.",
+        "keywords": [
+          "differential privacy",
+          "synthetic data generation",
+          "Pitman-Yor process",
+          "Bayesian nonparametrics",
+          "discrete distributions",
+          "privacy-utility tradeoff",
+          "Dirichlet process"
+        ]
+      }
+    },
+    {
+      "title": "A welding penetration prediction model for laser welding process based on self-supervised learning using physics-informed neural networks",
+      "authors": [
+        "Sen Li",
+        "Xiaoying Liu",
+        "Xiaojian Xu",
+        "Chendong Shao",
+        "Yaqi Wang",
+        "Ling Lan",
+        "Xinhua Tang",
+        "Haichao Cui"
+      ],
+      "published": "2026-06-24T17:33:41Z",
+      "link": "https://arxiv.org/abs/2606.26059v1",
+      "summary": {
+        "one_liner": "SimPhysNet uses physics-informed neural networks with self-supervised learning to predict laser welding penetration accuracy with minimal labeled data.",
+        "key_contribution": "A novel self-supervised learning algorithm that combines physics-informed priors with contrastive learning and few-shot learning to achieve 96% penetration classification accuracy using only 200 labeled images (5% of typical dataset size).",
+        "why_it_matters": "Industrial welding quality control requires accurate penetration prediction, but labeled training data is expensive and scarce. This approach enables high-accuracy defect detection with minimal labeling overhead, making intelligent automation of welding processes practical and cost-effective for real manufacturing environments.",
+        "keywords": [
+          "laser welding",
+          "physics-informed neural networks",
+          "self-supervised learning",
+          "few-shot learning",
+          "penetration prediction",
+          "contrastive learning",
+          "industrial automation"
+        ]
+      }
+    },
+    {
+      "title": "Impact of parity-violating deep-inelastic scattering on the weak mixing angle and high-$x$ parton distributions",
+      "authors": [
+        "R. M. Whitehill",
+        "M. M. Dalton",
+        "T. Liu",
+        "W. Melnitchouk",
+        "N. Sato"
+      ],
+      "published": "2026-06-24T17:31:40Z",
+      "link": "https://arxiv.org/abs/2606.26056v1",
+      "summary": {
+        "one_liner": "This paper shows how parity-violating deep-inelastic scattering experiments can simultaneously constrain the weak mixing angle and improve our understanding of quark distributions at high parton momentum fractions.",
+        "key_contribution": "Demonstrates that future PVDIS measurements at Jefferson Lab can provide tight constraints on the weak mixing angle (sin²θW) and high-x parton distributions, and reveals a strong correlation between these quantities that requires simultaneous QCD+electroweak analysis for unbiased results.",
+        "why_it_matters": "For AI/physics engineers: This work shows why you can't fit electroweak and QCD parameters independently—they're entangled. Future precision experiments will require smarter joint analysis frameworks. It also identifies which PDF regions (strange quark, d/u ratio at high-x) are most sensitive to electroweak probes, which is crucial for building accurate physics simulators and generators.",
+        "keywords": [
+          "parity-violating deep-inelastic scattering",
+          "weak mixing angle",
+          "parton distribution functions",
+          "high-x regime",
+          "Jefferson Lab",
+          "QCD+QED analysis"
+        ]
+      }
+    },
+    {
+      "title": "Parnassus: A GPU-enabled, Python-based Package for Fast Particle Detector Simulation and Reconstruction",
+      "authors": [
+        "Abdelrahman Elabd",
+        "Eilam Gross",
+        "Dmitrii Kobylianskii",
+        "Benjamin Nachman"
+      ],
+      "published": "2026-06-24T17:57:29Z",
+      "link": "https://arxiv.org/abs/2606.26089v1",
+      "summary": {
+        "one_liner": "Parnassus is a GPU-accelerated Python/PyTorch framework for fast particle detector simulation and reconstruction that replaces traditional C++/ROOT-based tools with neural and parametric models.",
+        "key_contribution": "A unified, user-friendly software framework that provides interchangeable detector models (neural networks and parametric models) for multiple experiments (CMS, ATLAS, ALEPH) with a process-agnostic API that works without retraining on new physics processes.",
+        "why_it_matters": "Particle physics researchers can now run detector simulations and reconstructions orders of magnitude faster on GPUs without ROOT dependencies, enabling rapid exploration of new physics scenarios. The modular design means the same tool works across different detectors and physics processes, reducing development overhead.",
+        "keywords": [
+          "particle detector simulation",
+          "GPU acceleration",
+          "PyTorch",
+          "neural networks",
+          "flow matching",
+          "particle physics",
+          "fast reconstruction"
+        ]
+      }
+    },
+    {
+      "title": "A welding penetration prediction model for laser welding process based on self-supervised learning using physics-informed neural networks",
+      "authors": [
+        "Sen Li",
+        "Xiaoying Liu",
+        "Xiaojian Xu",
+        "Chendong Shao",
+        "Yaqi Wang",
+        "Ling Lan",
+        "Xinhua Tang",
+        "Haichao Cui"
+      ],
+      "published": "2026-06-24T17:33:41Z",
+      "link": "https://arxiv.org/abs/2606.26059v1",
+      "summary": {
+        "one_liner": "SimPhysNet uses physics-informed neural networks with self-supervised learning to predict laser welding penetration with high accuracy using only 5% of labeled data.",
+        "key_contribution": "A novel self-supervised learning algorithm that combines physics-informed neural networks (PINNs) with contrastive learning and few-shot learning to achieve 96.06% classification accuracy on welding penetration prediction using just 200 labeled images instead of thousands.",
+        "why_it_matters": "Labeled training data is expensive and scarce in industrial settings. This approach solves a real manufacturing problem by embedding domain knowledge (physics priors) into the learning process, enabling accurate quality control with minimal labeled data—making AI deployment practical for laser welding automation.",
+        "keywords": [
+          "self-supervised learning",
+          "physics-informed neural networks",
+          "few-shot learning",
+          "laser welding",
+          "penetration prediction",
+          "contrastive learning",
+          "industrial automation"
+        ]
+      }
+    },
+    {
+      "title": "Natural Ungrokking: Asymmetric Control of Which Rules Survive Pretraining",
+      "authors": [
+        "Juliana Li",
+        "Diya Sreedhar"
+      ],
+      "published": "2026-06-24T17:27:13Z",
+      "link": "https://arxiv.org/abs/2606.26050v1",
+      "summary": {
+        "one_liner": "Language models naturally forget learned rules mid-training when competing patterns become more frequent in the data, and this forgetting cannot be reversed even with massive support injection.",
+        "key_contribution": "Discovery that rule survival during pretraining is determined by a single corpus statistic (support frequency), that forgetting is irreversible despite being predictable, and that this 'natural ungrokking' happens through displacement by competing patterns rather than degradation of model capacity.",
+        "why_it_matters": "This reveals a fundamental asymmetry in how language models learn and forget during training: you can predictably kill learned rules by changing data statistics, but you cannot restore them. This has implications for data curation, model interpretability, and understanding what knowledge actually sticks during pretraining versus what gets overshadowed.",
+        "keywords": [
+          "ungrokking",
+          "rule forgetting",
+          "pretraining dynamics",
+          "grokking reversal",
+          "data curriculum",
+          "model interpretability"
+        ]
+      }
+    },
+    {
+      "title": "Spin modulations in the Rashba-Hubbard chain -- a tensor network study",
+      "authors": [
+        "Jozef Genzor",
+        "Roman Krčmár",
+        "Andrej Gendiar",
+        "Chia-Min Chung",
+        "Denis Kochan"
+      ],
+      "published": "2026-06-24T16:35:15Z",
+      "link": "https://arxiv.org/abs/2606.26014v1",
+      "summary": {
+        "one_liner": "This paper shows how spin-orbit coupling creates observable spin modulations in one-dimensional Hubbard chains even though it can be mathematically removed as a gauge field.",
+        "key_contribution": "The authors demonstrate that while Rashba spin-orbit coupling can be exactly removed from the Hamiltonian via a gauge transformation, it leaves detectable signatures in spin correlations through spin-dependent sidebands at wave vectors k₀±k_so, and provide DMRG calculations verifying this effect across different filling factors.",
+        "why_it_matters": "This work provides a rigorous benchmark for understanding how spin-orbit coupling manifests in observable quantities for 1D systems. It establishes a controlled reference point for studying more complex systems (ladders, multiorbital chains, higher dimensions) where spin-orbit coupling cannot be gauged away, making it crucial for designing and interpreting experiments with spin-orbit-coupled materials.",
+        "keywords": [
+          "Rashba spin-orbit coupling",
+          "Hubbard chain",
+          "density matrix renormalization group (DMRG)",
+          "spin structure factor",
+          "gauge transformation",
+          "spin-dependent modulations"
+        ]
+      }
+    },
+    {
+      "title": "G-PINNs: Gaussian-based spatially weighted formulation for PINNs: 1D low-viscous Burgers",
+      "authors": [
+        "Kheir-eddine Otmani",
+        "Abdelhalim Azzouz",
+        "Nourelhouda Groun",
+        "Esteban Ferrer"
+      ],
+      "published": "2026-06-24T16:32:51Z",
+      "link": "https://arxiv.org/abs/2606.26013v1",
+      "summary": {
+        "one_liner": "A new PINN training method using Gaussian-weighted loss functions that automatically detects and focuses on shock waves and discontinuities without prior knowledge of their location.",
+        "key_contribution": "G-PINNs introduces a spatially weighted loss framework that dynamically prioritizes high-gradient regions during training, enabling autonomous shock detection and tracking directly from PDE residuals. This reduces L2 errors from 45% to 13% (stationary shocks) and 33% to 14% (moving shocks) in low-viscosity Burgers equations.",
+        "why_it_matters": "PINNs traditionally struggle with sharp discontinuities and shock waves, which are common in fluid dynamics and other physics simulations. G-PINNs solves this without requiring you to specify shock locations beforehand, making it practical for real-world problems where discontinuities are unknown or moving. This significantly improves accuracy in challenging regimes.",
+        "keywords": [
+          "Physics-Informed Neural Networks",
+          "Shock Waves",
+          "Spatially Weighted Loss",
+          "Burgers Equation",
+          "Discontinuity Detection"
+        ]
+      }
+    }
+  ]
+}
