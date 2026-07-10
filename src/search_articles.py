@@ -12,3 +12,14 @@ from langchain_core.output_parsers import StrOutputParser #Extracts plain text f
 load_dotenv()
 
 
+DATA_FOLDER = "data"
+CHROMA_FOLDER = "chroma_db" # ChromaDB saves its data here on disk so you dont re-embed everytime you run
+
+#small fast and free, runs locally my mac.
+EMBIDDING_MODEL = "all-MiniLM-L6-V2" #converts text -> 384-dimensonal vectors.
+
+
+
+
+ 
+
