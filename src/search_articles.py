@@ -16,7 +16,7 @@ DATA_FOLDER = "data"
 CHROMA_FOLDER = "chroma_db" # ChromaDB saves its data here on disk so you dont re-embed everytime you run
 
 #small fast and free, runs locally my mac.
-EMBIDDING_MODEL = "all-MiniLM-L6-V2" #converts text -> 384-dimensonal vectors.
+EMBEDDING_MODEL = "all-MiniLM-L6-V2" #converts text -> 384-dimensonal vectors.
 
 def load_papers(data_folder: str) -> list:
     all_papers=[]
@@ -47,8 +47,33 @@ def load_papers(data_folder: str) -> list:
     print(f"Loaded {len(all_papers)} papers from {len(json_files)} files")
     return all_papers
 
+def build_vector_store(papers: list)-> chromadb.Collection:
+    """
+    Converts each paper into an embedding vector and stores it in ChromaDB.
+
+    WHY embeddings?
+    Computers can't search text directly by meaning — but they CAN compare
+    numbers. An embedding turns text into a list of numbers that captures
+    its semantic meaning. Similar topics → similar numbers.
+
+    WHY ChromaDB?
+    It's a vector database — stores embeddings and lets you find the
+    most similar ones to any query. Like a search engine for meaning.
+    """
+    print(f"\n🔢 Loading embedding model: {EMBEDDING_MODEL}")
+    print("   (first run downloads ~90MB — this is normal)\n")
+    
+    model = SentenceTransformer(EMBEDDING_MODEL) #it converts any text into a fixed size vector of numbers.
+    
+    client = chromadb.PersistentClient(path=CHROMA_FOLDER) #saves chromdb to disk.
+    
+    collection = client.get_or_create_collection( #if collection is available from previous run use it or else create a new one
+        name="research_papers",
+        metadata={"hnsw:space": "cosine"} #cosine compares the angle between two vectors - perfect for comparing text meaning
+    )
+    existing_count= collection.count() #checking if already populated - skip re-embidding if so
+    if existing_count>0:
+        print(f"ChromaDB already has {existing_count} papers — skipping re-embedding")
+        print("(delete chroma_db folder to re-embbed from scratch)\n")
+        return collection
         
-
-
- 
-
