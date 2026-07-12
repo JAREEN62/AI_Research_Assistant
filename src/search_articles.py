@@ -47,6 +47,7 @@ def load_papers(data_folder: str) -> list:
     print(f"Loaded {len(all_papers)} papers from {len(json_files)} files")
     return all_papers
 
+
 def build_vector_store(papers: list)-> chromadb.Collection:
     """
     Converts each paper into an embedding vector and stores it in ChromaDB.
@@ -114,5 +115,32 @@ def build_vector_store(papers: list)-> chromadb.Collection:
         ids = ids
     )
     
-    print(f"\nStored{len(papers)} [a[ers in ChromaDB!")
+    print(f"\n ✅Stored{len(papers)} [a[ers in ChromaDB!")
     return collection
+
+
+def search_papers(query: str, collection: chromadb.Collection,
+                  model: SentenceTransformer, n_results: int = 3 ) -> list:
+    print(f"\n🔎 Searching for: '{query}'")
+    
+    query_embedding = model.encode(query).tolist()
+    
+    result = collection.query(
+        query_embedding = [query_embedding],
+        n_results = n_results,
+        include = ["documents","metadatas","distances"]
+    )
+    
+    papers_found = []
+    for i in  range(len(result["ids"][0])):
+        papers_found.append(
+            {
+                "title":    result["metadatas"][0][i]["title"],
+                "authors":  result["metadatas"][0][i]["authors"],
+                "link":     result["metadatas"][0][i]["link"],
+                "text":     result["metadatas"][0][i],
+                "distance": result["metadatas"][0][i]
+            }
+        )
+    print(f"    Found{len(papers_found)} relevent papers")
+    return papers_found
