@@ -77,3 +77,42 @@ def build_vector_store(papers: list)-> chromadb.Collection:
         print("(delete chroma_db folder to re-embbed from scratch)\n")
         return collection
         
+    print(f"embididng {len(papers)} papers into ChromaDB...")
+    print("This may take 1-2 minutes on first run...\n")
+    
+    documents = [] #the text we embedd
+    metadatas = [] #extra info stored alongside (not embedded)
+    ids = [] #unique ID for each paper
+    
+    for i,paper in enumerate(papers):
+        title = paper.get("title","Untitled")
+        abstract = paper.get("summary", "")
+        authors = paper.get("authors", [])
+        link = paper.get("link","")
+        
+        text_to_embed = f"Title: {title}\n\nAbstract: {abstract}"
+        
+        documents.append(text_to_embed)
+        
+        metadatas.append(
+            {
+            "title":   title,
+            "authors": ", ".join(authors[:3]),  # first 3 authors
+            "link":    link, 
+            }
+        )
+        
+        ids.append(f"paper_{i}")
+        
+    print("Generating embiddings...")
+    embeddings = model.encode(documents,show_progress_bar=True).tolist()
+    
+    collection.add(
+        documents = documents,
+        embeddings = embeddings,
+        metadatas = metadatas,
+        ids = ids
+    )
+    
+    print(f"\nStored{len(papers)} [a[ers in ChromaDB!")
+    return collection
