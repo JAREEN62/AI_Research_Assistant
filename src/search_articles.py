@@ -204,3 +204,18 @@ def answer_question(query: str, relevant_papers:list)-> str:
         
         print("loading embedding model for search...")
         search_model = SentenceTransformer(EMBEDDING_MODEL) 
+        
+        test_queries = [
+            "What papers talk about robot learning and manipulation?",
+            "Which papers use neural networks for prediction?",
+            "What are the latest advances in machine learning?"
+        ]
+        
+        for query in test_queries:
+            print("\n" + "=" * 55)
+            relevant_papers = search_papers(
+                query       = query,
+                collection  = collection,
+                model       = search_model,
+                n_results   = 3
+            )
