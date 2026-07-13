@@ -144,3 +144,49 @@ def search_papers(query: str, collection: chromadb.Collection,
         )
     print(f"    Found{len(papers_found)} relevent papers")
     return papers_found
+
+def answer_question(query: str, relevant_papers:list)-> str:
+    llm = ChatAnthropic(model="claude-haiku-4-5")
+    parser = StrOutputParser()
+    
+    context = ""
+    for i, paper in enumerate(relevant_papers,1):
+        context += f"""
+        paper {i}:
+        Title : {paper['title']}
+        Authors : {paper['authors']}
+        Context : {paper['text']}
+        Link : {paper['link']}
+        ---
+        """
+        #system - sets claudes role and behaviour
+        #Human - actual question + context
+        prompt = ChatPromptTemplate.from_message(
+            [
+                ("system", """You are an expert AI research assistant with deep knowledge of machine learning and AI papers. 
+                 
+                Answer the user's question based ONLY on the provided research papers.
+                Be specific — cite which paper says what.
+                If the papers don't contain enough information, say so honestly.
+                Keep your answer clear and useful for an AI engineer."""),
+                
+                ("human", """Here are the most relevant papers I found:
+
+                {context}
+
+                Question: {question}
+
+                Please answer based on these papers.""")
+
+            ]
+        )
+    
+        chain = prompt | llm | parser
+        
+        print("\n Claude is generating an answer...\n")
+        answer = chain.invoke({
+            "context": context,
+            "question": query
+        })
+        
+        return answer
