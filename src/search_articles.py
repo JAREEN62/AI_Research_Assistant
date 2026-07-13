@@ -190,3 +190,17 @@ def answer_question(query: str, relevant_papers:list)-> str:
         })
         
         return answer
+    
+    if __name__ == "__main__";
+        print("=" * 55)
+        print("  AI Research Assistant - RAG Search")
+        print("=" * 55)
+
+        papers = load_papers(DATA_FOLDER)
+        if not papers:
+            exit()
+        
+        collection = build_vector_store(papers)
+        
+        print("loading embedding model for search...")
+        search_model = SentenceTransformer(EMBEDDING_MODEL) 
