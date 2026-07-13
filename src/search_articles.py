@@ -16,7 +16,7 @@ DATA_FOLDER = "data"
 CHROMA_FOLDER = "chroma_db" # ChromaDB saves its data here on disk so you dont re-embed everytime you run
 
 #small fast and free, runs locally my mac.
-EMBEDDING_MODEL = "all-MiniLM-L6-V2" #converts text -> 384-dimensonal vectors.
+EMBEDDING_MODEL = "all-MiniLM-L6-v2" #converts text -> 384-dimensonal vectors.
 
 def load_papers(data_folder: str) -> list:
     all_papers=[]
@@ -115,7 +115,7 @@ def build_vector_store(papers: list)-> chromadb.Collection:
         ids = ids
     )
     
-    print(f"\n ✅Stored{len(papers)} [a[ers in ChromaDB!")
+    print(f"\n ✅ Stored {len(papers)} papers in ChromaDB!")
     return collection
 
 
@@ -126,11 +126,11 @@ def search_papers(query: str, collection: chromadb.Collection,
     query_embedding = model.encode(query).tolist()
     
     result = collection.query(
-        query_embedding = [query_embedding],
+        query_embeddings = [query_embedding],
         n_results = n_results,
         include = ["documents","metadatas","distances"]
     )
-    
+
     papers_found = []
     for i in  range(len(result["ids"][0])):
         papers_found.append(
@@ -138,8 +138,8 @@ def search_papers(query: str, collection: chromadb.Collection,
                 "title":    result["metadatas"][0][i]["title"],
                 "authors":  result["metadatas"][0][i]["authors"],
                 "link":     result["metadatas"][0][i]["link"],
-                "text":     result["metadatas"][0][i],
-                "distance": result["metadatas"][0][i]
+                "text":     result["documents"][0][i],
+                "distance": result["distances"][0][i]
             }
         )
     print(f"    Found{len(papers_found)} relevent papers")
@@ -159,75 +159,75 @@ def answer_question(query: str, relevant_papers:list)-> str:
         Link : {paper['link']}
         ---
         """
-        #system - sets claudes role and behaviour
-        #Human - actual question + context
-        prompt = ChatPromptTemplate.from_message(
-            [
-                ("system", """You are an expert AI research assistant with deep knowledge of machine learning and AI papers. 
-                 
-                Answer the user's question based ONLY on the provided research papers.
-                Be specific — cite which paper says what.
-                If the papers don't contain enough information, say so honestly.
-                Keep your answer clear and useful for an AI engineer."""),
-                
-                ("human", """Here are the most relevant papers I found:
+    #system - sets claudes role and behaviour
+    #Human - actual question + context
+    prompt = ChatPromptTemplate.from_messages(
+        [
+            ("system", """You are an expert AI research assistant with deep knowledge of machine learning and AI papers.
 
-                {context}
+            Answer the user's question based ONLY on the provided research papers.
+            Be specific — cite which paper says what.
+            If the papers don't contain enough information, say so honestly.
+            Keep your answer clear and useful for an AI engineer."""),
 
-                Question: {question}
+            ("human", """Here are the most relevant papers I found:
 
-                Please answer based on these papers.""")
+            {context}
 
-            ]
-        )
-    
-        chain = prompt | llm | parser
-        
-        print("\n Claude is generating an answer...\n")
-        answer = chain.invoke({
-            "context": context,
-            "question": query
-        })
-        
-        return answer
-    
-    if __name__ == "__main__":
-        print("=" * 55)
-        print("  AI Research Assistant - RAG Search")
-        print("=" * 55)
+            Question: {question}
 
-        papers = load_papers(DATA_FOLDER)
-        if not papers:
-            exit()
-        
-        collection = build_vector_store(papers)
-        
-        print("loading embedding model for search...")
-        search_model = SentenceTransformer(EMBEDDING_MODEL) 
-        
-        test_queries = [
-            "What papers talk about robot learning and manipulation?",
-            "Which papers use neural networks for prediction?",
-            "What are the latest advances in machine learning?"
+            Please answer based on these papers.""")
+
         ]
-        
-        for query in test_queries:
-            print("\n" + "=" * 55)
-            relevant_papers = search_papers(
-                query       = query,
-                collection  = collection,
-                model       = search_model,
-                n_results   = 3
-            )
-            
-            print("\n Retrived papers: ")
-            for i, paper in enumerate(relevant_papers, i):
-                print(f" {i}. {paper['title'][:60]}...")
-                print(f" Similarity score: {i-paper['distance']:.2%}")
-            
-            answer = answer_question(query, relevant_papers)
-            
-            print(f"Question: {query}")
-            print(f"\n Answer: \n{answer}")
-            print("\n" + "=" * 55)
-            
+    )
+
+    chain = prompt | llm | parser
+
+    print("\n Claude is generating an answer...\n")
+    answer = chain.invoke({
+        "context": context,
+        "question": query
+    })
+
+    return answer
+
+
+if __name__ == "__main__":
+    print("=" * 55)
+    print("  AI Research Assistant - RAG Search")
+    print("=" * 55)
+
+    papers = load_papers(DATA_FOLDER)
+    if not papers:
+        exit()
+
+    collection = build_vector_store(papers)
+
+    print("loading embedding model for search...")
+    search_model = SentenceTransformer(EMBEDDING_MODEL)
+
+    test_queries = [
+        "What papers talk about robot learning and manipulation?",
+        "Which papers use neural networks for prediction?",
+        "What are the latest advances in machine learning?"
+    ]
+
+    for query in test_queries:
+        print("\n" + "=" * 55)
+        relevant_papers = search_papers(
+            query       = query,
+            collection  = collection,
+            model       = search_model,
+            n_results   = 3
+        )
+
+        print("\n Retrived papers: ")
+        for i, paper in enumerate(relevant_papers, 1):
+            print(f" {i}. {paper['title'][:60]}...")
+            print(f" Similarity score: {1 - paper['distance']:.2%}")
+
+        answer = answer_question(query, relevant_papers)
+
+        print(f"Question: {query}")
+        print(f"\n Answer: \n{answer}")
+        print("\n" + "=" * 55)
