@@ -191,7 +191,7 @@ def answer_question(query: str, relevant_papers:list)-> str:
         
         return answer
     
-    if __name__ == "__main__";
+    if __name__ == "__main__":
         print("=" * 55)
         print("  AI Research Assistant - RAG Search")
         print("=" * 55)
@@ -225,4 +225,9 @@ def answer_question(query: str, relevant_papers:list)-> str:
                 print(f" {i}. {paper['title'][:60]}...")
                 print(f" Similarity score: {i-paper['distance']:.2%}")
             
+            answer = answer_question(query, relevant_papers)
+            
+            print(f"Question: {query}")
+            print(f"\n Answer: \n{answer}")
+            print("\n" + "=" * 55)
             
