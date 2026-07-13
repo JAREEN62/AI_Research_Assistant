@@ -219,3 +219,10 @@ def answer_question(query: str, relevant_papers:list)-> str:
                 model       = search_model,
                 n_results   = 3
             )
+            
+            print("\n Retrived papers: ")
+            for i, paper in enumerate(relevant_papers, i):
+                print(f" {i}. {paper['title'][:60]}...")
+                print(f" Similarity score: {i-paper['distance']:.2%}")
+            
+            
