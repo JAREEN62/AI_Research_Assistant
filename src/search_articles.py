@@ -231,3 +231,4 @@ if __name__ == "__main__":
         print(f"Question: {query}")
         print(f"\n Answer: \n{answer}")
         print("\n" + "=" * 55)
+        
