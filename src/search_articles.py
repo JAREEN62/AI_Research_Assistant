@@ -224,7 +224,13 @@ if __name__ == "__main__":
         print("\n Retrived papers: ")
         for i, paper in enumerate(relevant_papers, 1):
             print(f" {i}. {paper['title'][:60]}...")
-            print(f" Similarity score: {1 - paper['distance']:.2%}")
+            #smaller distance = more similarity, the distance ranges through 0(identical) to 2(opposite)
+            #cosine similarity = 1- cosine distance  
+            #chromaDBs .query() returns a distance
+            #subtracting the distance from 1 turns "lower is better" into "higher is better" — approximating a similarity score.
+            #:.2% is a f-string formate spec: treates the number as a percentage(multiplies by 100 and appends a % sign) with 2 decimal places
+            # if the distance is 0.35 thhen it becomes 1-0.35 = 0.65 -> 65.00%
+            print(f" Similarity score: {1 - paper['distance']:.2%}") 
 
         answer = answer_question(query, relevant_papers)
 
