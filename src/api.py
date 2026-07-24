@@ -28,7 +28,15 @@ class QuestionRequest(BaseModel):
     
 @app.post("/ask")
 def ask_question(request: QuestionRequest):
+    relevant_papers = search_papers(
+        query=request.question,
+        collection=collection,
+        n_results=request.n_results,
+    )
     return {
-        "you_asked": request.question,
-        "n_results": request.n_results
+        "question": request.question,
+        "sources": [
+            {"title": p["title"], "similarity": round(1-p["distance"],4)}
+            for p in relevant_papers
+        ]
     }

@@ -4,7 +4,8 @@ import glob
 from dotenv import load_dotenv
 
 import chromadb  #the vector database that stores and searches embeddings
-from sentence_transformers import SentenceTransformer #converts text into embedding vectors(numbers)
+# from sentence_transformers import SentenceTransformer #converts text into embedding vectors(numbers)
+from chromadb.utils import embedding_functions
 from langchain_anthropic import ChatAnthropic #Claude, which answers questions using retrived papers
 from langchain_core.prompts import ChatPromptTemplate #Structures the prompts for claude
 from langchain_core.output_parsers import StrOutputParser #Extracts plain text from Claude's response
@@ -61,16 +62,21 @@ def build_vector_store(papers: list)-> chromadb.Collection:
     It's a vector database — stores embeddings and lets you find the
     most similar ones to any query. Like a search engine for meaning.
     """
-    print(f"\n🔢 Loading embedding model: {EMBEDDING_MODEL}")
-    print("   (first run downloads ~90MB — this is normal)\n")
-    
-    model = SentenceTransformer(EMBEDDING_MODEL) #it converts any text into a fixed size vector of numbers.
-    
+    print(f"\n🔢 Setting up embedding model: {EMBEDDING_MODEL}\n")
+
+    # WHY embedding_functions?
+    # ChromaDB has a built-in wrapper for sentence-transformers
+    # that handles it internally — avoids compatibility issues
+    ef = embedding_functions.SentenceTransformerEmbeddingFunction(
+        model_name=EMBEDDING_MODEL
+    )
+
     client = chromadb.PersistentClient(path=CHROMA_FOLDER) #saves chromdb to disk.
-    
+
     collection = client.get_or_create_collection( #if collection is available from previous run use it or else create a new one
         name="research_papers",
-        metadata={"hnsw:space": "cosine"} #cosine compares the angle between two vectors - perfect for comparing text meaning
+        metadata={"hnsw:space": "cosine"}, #cosine compares the angle between two vectors — perfect for comparing text meaning
+        embedding_function=ef
     )
     existing_count= collection.count() #checking if already populated - skip re-embidding if so
     if existing_count>0:
@@ -105,12 +111,11 @@ def build_vector_store(papers: list)-> chromadb.Collection:
         
         ids.append(f"paper_{i}")
         
-    print("Generating embiddings...")
-    embeddings = model.encode(documents,show_progress_bar=True).tolist()
+    print("Generating embiddings (first run takes 1-2 mins)...")
+    # embeddings = model.encode(documents,show_progress_bar=True).tolist()
     
     collection.add(
         documents = documents,
-        embeddings = embeddings,
         metadatas = metadatas,
         ids = ids
     )
@@ -120,15 +125,15 @@ def build_vector_store(papers: list)-> chromadb.Collection:
 
 
 def search_papers(query: str, collection: chromadb.Collection,
-                  model: SentenceTransformer, n_results: int = 3 ) -> list:
+                   n_results: int = 3 ) -> list:
     print(f"\n🔎 Searching for: '{query}'")
     
-    query_embedding = model.encode(query).tolist()
+
     
     result = collection.query(
-        query_embeddings = [query_embedding],
-        n_results = n_results,
-        include = ["documents","metadatas","distances"]
+        query_texts      = [query],
+        n_results        = n_results,
+        include          = ["documents","metadatas","distances"]
     )
 
     papers_found = []
@@ -203,9 +208,6 @@ if __name__ == "__main__":
 
     collection = build_vector_store(papers)
 
-    print("loading embedding model for search...")
-    search_model = SentenceTransformer(EMBEDDING_MODEL)
-
     test_queries = [
         "What papers talk about robot learning and manipulation?",
         "Which papers use neural networks for prediction?",
@@ -217,7 +219,6 @@ if __name__ == "__main__":
         relevant_papers = search_papers(
             query       = query,
             collection  = collection,
-            model       = search_model,
             n_results   = 3
         )
 
